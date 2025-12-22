@@ -25,7 +25,7 @@ export const contactData = {
     {
       name: "Email",
       icon: Mail,
-      url: "t.luck.0101@gmail.com",
+      url: "https://mail.google.com/mail/?view=cm&to=t.luck.0101@gmail.com",
       handle: "t.luck.0101@gmail.com"
     }
   ]

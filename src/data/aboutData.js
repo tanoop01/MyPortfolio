@@ -1,17 +1,17 @@
-import { Code2, Palette, Rocket, BookOpen, Coffee, Music, Gamepad2, Camera, Film, Book } from 'lucide-react';
+import { Code2, Palette, Rocket, BookOpen, Coffee, Music, Gamepad2, Camera, Film, Book, Satellite } from 'lucide-react';
 
 export const aboutData = {
   title: "About Me",
   description: "I’m a curious innovator exploring the intersection of code, creativity, and AI, focused on building smart, user-friendly stuffs and continuously evolving with technology.",
   whoAmI: [
-    "Pursuing BTech in Information Technology at NIT Jalandhar",
-    "Currently in Second year"
+    "Pursuing BTech in Information Technology at NIT Jalandhar in India",
+    "Currently in Second year(4th Semester)"
    
   
   ],
   whatImLearning: [
-    "Diving deep into a wide range of IT subjects",
-    "DBMS, CSA, OOP....",
+    "Diving deep into a wide range of CS/IT subjects",
+    "Data Structures and Algorithm, DBMS, OOP, Computer Networks, Operating System, System Design......" 
    
   ],
   interests: [
@@ -19,7 +19,8 @@ export const aboutData = {
     { icon: Rocket, text: "Exploring new technologies" },
     { icon: Music, text: "Music lover" },
     { icon: Film, text: "Movie fanatic" },
-    { icon: Book, text: "Reading good books" }
+    { icon: Book, text: "Reading good books" },
+    { icon: Satellite, text: "Space Exploration" }
     
   ]
 };

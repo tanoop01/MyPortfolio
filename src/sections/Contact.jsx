@@ -39,27 +39,28 @@ const Contact = () => {
           >
             {contactData.social.map((social, index) => {
               const Icon = social.icon;
+              
               return (
-                <motion.a
-                  key={index}
-                  href={social.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  variants={slideUp}
-                  className="flex items-center gap-4 p-4 rounded-lg bg-black/40 backdrop-blur-xl border-2 border-white/60 hover:bg-white/90 transition-colors group"
-                >
-                  <div className="p-3 rounded-lg bg-black/50 backdrop-blur-md border border-white/60 text-white group-hover:bg-white group-hover:text-black group-hover:scale-110 transition-all">
-                    <Icon size={24} />
-                  </div>
-                  <div>
-                    <p className="font-semibold text-white group-hover:text-black">
-                      {social.name}
-                    </p>
-                    <p className="text-sm text-white group-hover:text-black">
-                      {social.handle}
-                    </p>
-                  </div>
-                </motion.a>
+                <motion.div key={index} variants={slideUp}>
+                  <a
+                    href={social.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex items-center gap-4 p-4 rounded-lg bg-black/40 backdrop-blur-xl border-2 border-white/60 hover:bg-white/90 transition-colors group"
+                  >
+                    <div className="p-3 rounded-lg bg-black/50 backdrop-blur-md border border-white/60 text-white group-hover:bg-white group-hover:text-black group-hover:scale-110 transition-all">
+                      <Icon size={24} />
+                    </div>
+                    <div>
+                      <p className="font-semibold text-white group-hover:text-black">
+                        {social.name}
+                      </p>
+                      <p className="text-sm text-white group-hover:text-black">
+                        {social.handle}
+                      </p>
+                    </div>
+                  </a>
+                </motion.div>
               );
             })}
           </motion.div>
