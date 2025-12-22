@@ -20,6 +20,14 @@ function DockItem({ children, className = '', onClick, mouseX, spring, distance,
   const targetSize = useTransform(mouseDistance, [-distance, 0, distance], [baseItemSize, magnification, baseItemSize]);
   const size = useSpring(targetSize, spring);
 
+  const handleClick = (e) => {
+    if (onClick) {
+      onClick(e);
+      // Remove focus after click to prevent persistent styling
+      e.currentTarget.blur();
+    }
+  };
+
   return (
     <motion.div
       ref={ref}
@@ -31,7 +39,7 @@ function DockItem({ children, className = '', onClick, mouseX, spring, distance,
       onHoverEnd={() => isHovered.set(0)}
       onFocus={() => isHovered.set(1)}
       onBlur={() => isHovered.set(0)}
-      onClick={onClick}
+      onClick={handleClick}
       className={`dock-item ${className}`}
       tabIndex={0}
       role="button"

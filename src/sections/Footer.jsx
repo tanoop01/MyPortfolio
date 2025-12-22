@@ -15,20 +15,17 @@ const Footer = () => {
       >
         <div className="flex items-center justify-center gap-2 mb-4">
           <p className="text-white">
-            Built with
+            Crafted with
           </p>
           <Heart
             size={16}
-            className="text-white fill-current animate-pulse"
+            className=" fill-red-500 animate-pulse"
           />
           <p className="text-white">
-            using React + Tailwind CSS
+            by Anoop
           </p>
         </div>
 
-        <p className="text-sm text-white">
-          © {currentYear} Portfolio. All rights reserved.
-        </p>
       </motion.div>
     </footer>
   );
