@@ -1,40 +1,46 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Menu, X, Download } from 'lucide-react';
+import { Menu, X, Download, Home, User, Code, FolderGit2, Mail } from 'lucide-react';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [showTooltip, setShowTooltip] = useState(false);
+  const [hoveredMobileItem, setHoveredMobileItem] = useState(null);
 
   const navItems = [
     { 
       name: 'Home', 
       href: '#home',
+      icon: Home,
       gradient: "radial-gradient(circle, rgba(59,130,246,0.15) 0%, rgba(37,99,235,0.06) 50%, rgba(29,78,216,0) 100%)",
       iconColor: "group-hover:text-blue-500 dark:group-hover:text-blue-400"
     },
     { 
       name: 'About', 
       href: '#about',
+      icon: User,
       gradient: "radial-gradient(circle, rgba(249,115,22,0.15) 0%, rgba(234,88,12,0.06) 50%, rgba(194,65,12,0) 100%)",
       iconColor: "group-hover:text-orange-500 dark:group-hover:text-orange-400"
     },
     { 
       name: 'Skills', 
       href: '#skills',
+      icon: Code,
       gradient: "radial-gradient(circle, rgba(34,197,94,0.15) 0%, rgba(22,163,74,0.06) 50%, rgba(21,128,61,0) 100%)",
       iconColor: "group-hover:text-green-500 dark:group-hover:text-green-400"
     },
     { 
       name: 'Projects', 
       href: '#projects',
+      icon: FolderGit2,
       gradient: "radial-gradient(circle, rgba(168,85,247,0.15) 0%, rgba(147,51,234,0.06) 50%, rgba(126,34,206,0) 100%)",
       iconColor: "group-hover:text-purple-500 dark:group-hover:text-purple-400"
     },
     { 
       name: 'Collaborate', 
       href: '#contact',
+      icon: Mail,
       gradient: "radial-gradient(circle, rgba(239,68,68,0.15) 0%, rgba(220,38,38,0.06) 50%, rgba(185,28,28,0) 100%)",
       iconColor: "group-hover:text-red-500 dark:group-hover:text-red-400"
     },
@@ -273,51 +279,150 @@ const Navbar = () => {
         </ul>
       </motion.div>
 
-      {/* Mobile Menu Button */}
-      <div className="md:hidden flex items-center gap-3 px-4 py-2 rounded-full bg-black/40 backdrop-blur-xl border-2 border-white/60 shadow-lg shadow-white/20">
-        <motion.button
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          className="text-white p-2"
-          whileTap={{ scale: 0.9 }}
-          aria-label="Toggle menu"
-        >
-          {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-        </motion.button>
-      </div>
-
-      {/* Mobile Menu - Enhanced responsiveness */}
-      <motion.div
-        className={`md:hidden absolute top-full mt-2 left-1/2 -translate-x-1/2 w-48 ${isMobileMenuOpen ? 'block' : 'hidden'}`}
-        initial={{ opacity: 0, scale: 0.95 }}
-        animate={{
-          opacity: isMobileMenuOpen ? 1 : 0,
-          scale: isMobileMenuOpen ? 1 : 0.95
-        }}
-        transition={{ duration: 0.2 }}
-      >
-        <div className="px-3 py-2 space-y-1 bg-black/40 backdrop-blur-xl border-2 border-white/60 rounded-2xl shadow-lg shadow-white/20">
-          {navItems.map((item) => (
-            <a
+      {/* Icon Navigation for Mobile (350px to md) */}
+      <div className="hidden min-[350px]:flex md:hidden items-center gap-2 px-2 py-2 rounded-full bg-black/40 backdrop-blur-xl border-2 border-white/60 shadow-lg shadow-white/20">
+        {/* Mobile Navigation Icons */}
+        {navItems.map((item) => {
+          const Icon = item.icon;
+          return (
+            <motion.div 
               key={item.name}
-              href={item.href}
-              onClick={(e) => scrollToSection(e, item.href)}
-              className="block px-3 py-2 text-xs sm:text-sm text-white hover:bg-white hover:text-black rounded-xl transition-colors"
+              className="relative"
+              onHoverStart={() => setHoveredMobileItem(item.name)}
+              onHoverEnd={() => setHoveredMobileItem(null)}
+              onTouchStart={() => setHoveredMobileItem(item.name)}
+              onTouchEnd={() => setTimeout(() => setHoveredMobileItem(null), 1500)}
             >
-              {item.name}
-            </a>
-          ))}
-          
-          {/* Download Resume in Mobile Menu */}
-          <a
+              <motion.a
+                href={item.href}
+                onClick={(e) => scrollToSection(e, item.href)}
+                className="flex items-center justify-center p-2 text-white hover:text-white hover:bg-white/20 rounded-full transition-colors"
+                whileTap={{ scale: 0.9 }}
+                aria-label={item.name}
+              >
+                <Icon size={18} />
+              </motion.a>
+              
+              {/* Tooltip */}
+              <AnimatePresence>
+                {hoveredMobileItem === item.name && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 5, scale: 0.9 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    exit={{ opacity: 0, y: 5, scale: 0.9 }}
+                    transition={{ duration: 0.2, ease: "easeOut" }}
+                    className="absolute left-1/2 -translate-x-1/2 pointer-events-none whitespace-nowrap px-2 py-1 rounded-md bg-black/90 backdrop-blur-sm border border-white/30 text-white text-xs z-[100]"
+                    style={{
+                      top: '3rem',
+                    }}
+                  >
+                    {item.name}
+                    {/* Arrow */}
+                    <div className="absolute -top-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-black/90 border-t border-l border-white/30 rotate-45" />
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </motion.div>
+          );
+        })}
+        
+        {/* Download Resume Icon */}
+        <motion.div 
+          className="relative ml-1 border-l border-white/30 pl-2"
+          onHoverStart={() => setHoveredMobileItem('Resume')}
+          onHoverEnd={() => setHoveredMobileItem(null)}
+          onTouchStart={() => setHoveredMobileItem('Resume')}
+          onTouchEnd={() => setTimeout(() => setHoveredMobileItem(null), 1500)}
+        >
+          <motion.a
             href="/anoop-resume.pdf"
             download="Anoop_Resume.pdf"
-            className="flex items-center gap-2 px-3 py-2 text-xs sm:text-sm text-white hover:bg-white hover:text-black rounded-xl transition-colors"
+            className="flex items-center justify-center p-2 text-white hover:text-white hover:bg-white/20 rounded-full transition-colors"
+            whileTap={{ scale: 0.9 }}
+            aria-label="Download Resume"
           >
-            <Download size={14} className="sm:w-4 sm:h-4" />
-            Resume
-          </a>
+            <Download size={18} />
+          </motion.a>
+          
+          {/* Tooltip */}
+          <AnimatePresence>
+            {hoveredMobileItem === 'Resume' && (
+              <motion.div
+                initial={{ opacity: 0, y: 5, scale: 0.9 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                exit={{ opacity: 0, y: 5, scale: 0.9 }}
+                transition={{ duration: 0.2, ease: "easeOut" }}
+                className="absolute left-1/2 -translate-x-1/2 pointer-events-none whitespace-nowrap px-2 py-1 rounded-md bg-black/90 backdrop-blur-sm border border-white/30 text-white text-xs z-[100]"
+                style={{
+                  top: '3rem',
+                }}
+              >
+                Resume
+                {/* Arrow */}
+                <div className="absolute -top-1 left-1/2 -translate-x-1/2 w-2 h-2 bg-black/90 border-t border-l border-white/30 rotate-45" />
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </motion.div>
+      </div>
+
+      {/* Hamburger Menu for Very Small Screens (< 350px) */}
+      <div className="max-[349px]:block hidden">
+        <div className="flex items-center gap-3 px-3 py-2 rounded-full bg-black/40 backdrop-blur-xl border-2 border-white/60 shadow-lg shadow-white/20">
+          <motion.button
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className="text-white p-1.5"
+            whileTap={{ scale: 0.9 }}
+            aria-label="Toggle menu"
+          >
+            {isMobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
+          </motion.button>
         </div>
-      </motion.div>
+
+        {/* Dropdown Menu */}
+        <AnimatePresence>
+          {isMobileMenuOpen && (
+            <motion.div
+              className="absolute top-full mt-2 left-1/2 -translate-x-1/2 w-44"
+              initial={{ opacity: 0, y: -10, scale: 0.95 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: -10, scale: 0.95 }}
+              transition={{ duration: 0.2, ease: "easeOut" }}
+            >
+              <div className="px-2 py-2 space-y-1 bg-black/40 backdrop-blur-xl border-2 border-white/60 rounded-2xl shadow-lg shadow-white/20">
+                {navItems.map((item) => {
+                  const Icon = item.icon;
+                  return (
+                    <motion.a
+                      key={item.name}
+                      href={item.href}
+                      onClick={(e) => scrollToSection(e, item.href)}
+                      className="flex items-center gap-2 px-3 py-2 text-sm text-white hover:bg-white/20 rounded-xl transition-colors"
+                      whileHover={{ x: 4 }}
+                      whileTap={{ scale: 0.98 }}
+                    >
+                      <Icon size={16} />
+                      <span>{item.name}</span>
+                    </motion.a>
+                  );
+                })}
+                
+                {/* Download Resume in Dropdown */}
+                <motion.a
+                  href="/anoop-resume.pdf"
+                  download="Anoop_Resume.pdf"
+                  className="flex items-center gap-2 px-3 py-2 text-sm text-white hover:bg-white/20 rounded-xl transition-colors border-t border-white/20 mt-1 pt-2"
+                  whileHover={{ x: 4 }}
+                  whileTap={{ scale: 0.98 }}
+                >
+                  <Download size={16} />
+                  <span>Resume</span>
+                </motion.a>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
     </motion.nav>
   );
 };
