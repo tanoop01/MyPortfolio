@@ -89,8 +89,10 @@ const Hero = () => {
             <Button
               variant="primary1"
               size="lg"
-              icon={Download}
-              href="#"
+              // icon={Download}
+              href="/anoop-resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
               aria-label="Resume"
             >
               Resume

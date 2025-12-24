@@ -1,10 +1,11 @@
 import { useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
-import { Menu, X } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Menu, X, Download } from 'lucide-react';
 
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [showTooltip, setShowTooltip] = useState(false);
 
   const navItems = [
     { 
@@ -37,6 +38,8 @@ const Navbar = () => {
       gradient: "radial-gradient(circle, rgba(239,68,68,0.15) 0%, rgba(220,38,38,0.06) 50%, rgba(185,28,28,0) 100%)",
       iconColor: "group-hover:text-red-500 dark:group-hover:text-red-400"
     },
+  
+
   ];
 
   const itemVariants = {
@@ -137,7 +140,7 @@ const Navbar = () => {
       transition={{ duration: 0.5 }}
     >
       <motion.div 
-        className="hidden md:block p-1.5 rounded-full bg-black/40 backdrop-blur-xl border-2 border-white/60 shadow-2xl shadow-white/20 relative overflow-hidden"
+        className="hidden md:block p-1.5 rounded-full bg-black/40 backdrop-blur-xl border-2 border-white/60 shadow-2xl shadow-white/20 relative overflow-visible"
         initial="initial"
         whileHover="hover"
       >
@@ -198,6 +201,75 @@ const Navbar = () => {
               </motion.div>
             </motion.li>
           ))}
+          
+          {/* Download Resume Button */}
+          <motion.li 
+            className="ml-2 relative"
+            initial={{ opacity: 0, scale: 0.8, width: 0 }}
+            variants={{
+              initial: { 
+                opacity: 0, 
+                scale: 0.8, 
+                width: 0,
+                transition: { duration: 0.4, ease: [0.4, 0, 0.2, 1] }
+              },
+              hover: { 
+                opacity: 1, 
+                scale: 1, 
+                width: "auto",
+                transition: { 
+                  duration: 0.4, 
+                  ease: [0.4, 0, 0.2, 1],
+                  opacity: { delay: 0.1 }
+                }
+              }
+            }}
+          >
+            <motion.a
+              href="/anoop-resume.pdf"
+              download="Anoop_Resume.pdf"
+              className="flex items-center justify-center p-2 rounded-full bg-white/10 text-white hover:bg-white hover:text-black transition-all duration-300 relative"
+              whileHover={{ scale: 1.15 }}
+              whileTap={{ scale: 0.9 }}
+              onMouseEnter={() => setShowTooltip(true)}
+              onMouseLeave={() => setShowTooltip(false)}
+              aria-label="Download Resume"
+            >
+              <Download size={18} />
+              
+              {/* Tooltip */}
+              <AnimatePresence>
+                {showTooltip && (
+                  <motion.div
+                    initial={{ opacity: 0, y: -10, scale: 0.9 }}
+                    animate={{ opacity: 1, y: 0, scale: 1 }}
+                    exit={{ opacity: 0, y: -10, scale: 0.9 }}
+                    transition={{ duration: 0.2, ease: "easeOut" }}
+                    className="absolute pointer-events-none"
+                    style={{ 
+                      top: '2.75rem',
+                      // left: '50%',
+                      width: 'fit-content',
+                      whiteSpace: 'pre',
+                      borderRadius: '0.5rem',
+                      border: '2px solid rgba(255, 255, 255, 0.7)',
+                      background: 'rgba(0, 0, 0, 0.6)',
+                      backdropFilter: 'blur(16px)',
+                      WebkitBackdropFilter: 'blur(16px)',
+                      padding: '0.375rem 0.75rem',
+                      fontSize: '0.7rem',
+                      color: '#fff',
+                      transform: 'translateX(-50%)',
+                      boxShadow: '0 4px 12px rgba(255, 255, 255, 0.3)',
+                      zIndex: 9999
+                    }}
+                  >
+                    Download Resume
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </motion.a>
+          </motion.li>
         </ul>
       </motion.div>
 
@@ -234,6 +306,16 @@ const Navbar = () => {
               {item.name}
             </a>
           ))}
+          
+          {/* Download Resume in Mobile Menu */}
+          <a
+            href="/anoop-resume.pdf"
+            download="Anoop_Resume.pdf"
+            className="flex items-center gap-2 px-4 py-2 text-sm text-white hover:bg-white hover:text-black rounded-xl transition-colors"
+          >
+            <Download size={16} />
+            Resume
+          </a>
         </div>
       </motion.div>
     </motion.nav>
