@@ -10,7 +10,7 @@ const Button = ({
   icon: Icon,
   ...props 
 }) => {
-  const baseStyles = 'inline-flex items-center justify-center gap-2 font-medium rounded-full transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 dark:focus:ring-offset-gray-900 overflow-hidden';
+  const baseStyles = 'inline-flex items-center justify-center gap-1.5 sm:gap-2 font-medium rounded-full transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 dark:focus:ring-offset-gray-900 overflow-hidden';
   
   const variants = {
     primary: 'bg-black/50 backdrop-blur-xl border-2 border-white/70 text-white hover:bg-white/90 hover:text-black hover:border-white focus:ring-white shadow-lg hover:shadow-xl',
@@ -20,17 +20,18 @@ const Button = ({
     ghost: 'bg-transparent backdrop-blur-xl text-white hover:bg-white/20 hover:border-white/40 focus:ring-white'
   };
   
+  // Mobile responsive button sizes
   const sizes = {
-    sm: 'px-4 py-2 text-sm',
-    md: 'px-6 py-3 text-base',
-    lg: 'px-8 py-4 text-lg'
+    sm: 'px-3 py-1.5 text-xs sm:px-4 sm:py-2 sm:text-sm',
+    md: 'px-4 py-2 text-sm sm:px-6 sm:py-3 sm:text-base',
+    lg: 'px-5 py-2.5 text-sm sm:px-8 sm:py-4 sm:text-lg'
   };
   
   const classes = `${baseStyles} ${variants[variant]} ${sizes[size]} ${className}`;
   
   const content = (
     <>
-      {Icon && <Icon size={size === 'sm' ? 16 : size === 'lg' ? 24 : 20} />}
+      {Icon && <Icon size={size === 'sm' ? 14 : size === 'lg' ? 20 : 18} className="sm:w-5 sm:h-5" />}
       {children}
     </>
   );

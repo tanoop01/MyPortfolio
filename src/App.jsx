@@ -59,11 +59,13 @@ function App() {
             <Contact />
           </main>
           <Footer />
+          {/* Mobile responsive Dock - Smaller on mobile */}
           <Dock 
             items={dockItems}
-            panelHeight={56}
-            baseItemSize={40}
-            magnification={56}
+            panelHeight={48}
+            baseItemSize={36}
+            magnification={48}
+            className="scale-90 sm:scale-100"
           />
         </div>
       </div>

@@ -285,7 +285,7 @@ const Navbar = () => {
         </motion.button>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu - Enhanced responsiveness */}
       <motion.div
         className={`md:hidden absolute top-full mt-2 left-1/2 -translate-x-1/2 w-48 ${isMobileMenuOpen ? 'block' : 'hidden'}`}
         initial={{ opacity: 0, scale: 0.95 }}
@@ -301,7 +301,7 @@ const Navbar = () => {
               key={item.name}
               href={item.href}
               onClick={(e) => scrollToSection(e, item.href)}
-              className="block px-4 py-2 text-sm text-white hover:bg-white hover:text-black rounded-xl transition-colors"
+              className="block px-3 py-2 text-xs sm:text-sm text-white hover:bg-white hover:text-black rounded-xl transition-colors"
             >
               {item.name}
             </a>
@@ -311,9 +311,9 @@ const Navbar = () => {
           <a
             href="/anoop-resume.pdf"
             download="Anoop_Resume.pdf"
-            className="flex items-center gap-2 px-4 py-2 text-sm text-white hover:bg-white hover:text-black rounded-xl transition-colors"
+            className="flex items-center gap-2 px-3 py-2 text-xs sm:text-sm text-white hover:bg-white hover:text-black rounded-xl transition-colors"
           >
-            <Download size={16} />
+            <Download size={14} className="sm:w-4 sm:h-4" />
             Resume
           </a>
         </div>

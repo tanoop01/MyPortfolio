@@ -65,15 +65,17 @@ const OrbitingSkills = () => {
   }, []);
 
   return (
-    <div className="relative w-full h-[1000px] flex items-center justify-center overflow-visible">
-      {/* Concentric Circles */}
+    // Mobile responsive: Reduce height and scale on small screens
+    <div className="relative w-full h-[600px] sm:h-[800px] md:h-[900px] lg:h-[1000px] flex items-center justify-center overflow-visible scale-75 xs:scale-90 sm:scale-95 md:scale-100">
+      {/* Concentric Circles - Scale down on mobile */}
       {orbits.map((orbit, index) => (
         <motion.div
           key={index}
           className="absolute rounded-full border border-white/20"
           style={{
-            width: orbit.radius * 2,
-            height: orbit.radius * 2,
+            // Responsive orbit sizing
+            width: `min(${orbit.radius * 2}px, ${orbit.radius * 1.5}px)`,
+            height: `min(${orbit.radius * 2}px, ${orbit.radius * 1.5}px)`,
           }}
           initial={{ opacity: 0, scale: 0.8 }}
           animate={isVisible ? { opacity: 1, scale: 1 } : {}}
@@ -111,8 +113,9 @@ const OrbitingSkills = () => {
                   type: 'spring',
                 }}
               >
+                {/* Mobile responsive skill badges */}
                 <motion.div
-                  className="relative px-3 py-1.5 rounded-full font-medium text-xs whitespace-nowrap shadow-lg cursor-pointer border-2 border-white overflow-visible group"
+                  className="relative px-2 py-1 sm:px-3 sm:py-1.5 rounded-full font-medium text-[10px] xs:text-xs whitespace-nowrap shadow-lg cursor-pointer border border-white sm:border-2 overflow-visible group"
                   whileHover={{
                     scale: 1.15,
                     zIndex: 50,

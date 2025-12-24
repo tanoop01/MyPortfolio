@@ -5,7 +5,7 @@ const Footer = () => {
   const currentYear = new Date().getFullYear();
 
   return (
-    <footer className="bg-transparent border-t border-white py-8 px-4">
+    <footer className="bg-transparent border-t border-white py-6 sm:py-8 px-4">
       <motion.div
         className="max-w-6xl mx-auto text-center"
         initial={{ opacity: 0, y: 20 }}
@@ -13,15 +13,16 @@ const Footer = () => {
         viewport={{ once: true }}
         transition={{ duration: 0.5 }}
       >
-        <div className="flex items-center justify-center gap-2 mb-4">
-          <p className="text-white">
+        {/* Mobile responsive footer text */}
+        <div className="flex items-center justify-center gap-1.5 sm:gap-2 mb-3 sm:mb-4">
+          <p className="text-sm sm:text-base text-white">
             Crafted with
           </p>
           <Heart
-            size={16}
-            className=" fill-red-500 animate-pulse"
+            size={14}
+            className="sm:w-4 sm:h-4 fill-red-500 animate-pulse"
           />
-          <p className="text-white">
+          <p className="text-sm sm:text-base text-white">
             by Anoop
           </p>
         </div>

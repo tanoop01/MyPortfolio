@@ -7,6 +7,10 @@ export default {
   darkMode: 'class',
   theme: {
     extend: {
+      // Add custom breakpoint for extra small devices
+      screens: {
+        'xs': '475px',
+      },
       colors: {
         primary: {
           light: '#3b82f6',

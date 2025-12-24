@@ -22,7 +22,7 @@ const Hero = () => {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 overflow-hidden"
+      className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8 overflow-hidden pt-20 sm:pt-0"
     >
       {/* Animated Background */}
       <div className="absolute inset-0 overflow-hidden">
@@ -40,15 +40,15 @@ const Hero = () => {
           {/* Greeting */}
           <motion.p
             variants={slideUp}
-            className="text-base sm:text-lg text-white font-medium"
+            className="text-sm sm:text-base md:text-lg text-white font-medium"
           >
             Hi, I'm
           </motion.p>
 
-          {/* Name with SHINY EFFECT */}
+          {/* Name with SHINY EFFECT - Mobile responsive */}
           <motion.h1
             variants={slideUp}
-            className="text-4xl sm:text-6xl lg:text-7xl xl:text-8xl font-bold"
+            className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold px-2 sm:px-0"
           >
             <ShinyText
               text="Anoop Tripathi"
@@ -57,26 +57,26 @@ const Hero = () => {
             />
           </motion.h1>
 
-          {/* Tagline */}
+          {/* Tagline - Mobile responsive */}
           <motion.p
             variants={slideUp}
-            className="text-xl sm:text-2xl lg:text-3xl text-white font-semibold"
+            className="text-base xs:text-lg sm:text-xl md:text-2xl lg:text-3xl text-white font-semibold px-4 sm:px-0"
           >
             Aspiring Developer | AI Enthusiast | Tech Explorer
           </motion.p>
 
-          {/* Description */}
+          {/* Description - Mobile responsive */}
           <motion.p
             variants={slideUp}
-            className="text-base sm:text-lg lg:text-xl text-white max-w-3xl mx-auto leading-relaxed"
+            className="text-sm xs:text-base sm:text-lg lg:text-xl text-white max-w-3xl mx-auto leading-relaxed px-4 sm:px-6 lg:px-0"
           >
             Exploring the world of technology through code, creativity, and a growing passion for AI and intelligent systems.
           </motion.p>
 
-          {/* CTA Buttons */}
+          {/* CTA Buttons - Mobile responsive */}
           <motion.div
             variants={slideUp}
-            className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4"
+            className="flex flex-col xs:flex-row items-stretch xs:items-center justify-center gap-3 sm:gap-4 pt-4 w-full xs:w-auto px-4 xs:px-0"
           >
              <Button
               variant="outline"
