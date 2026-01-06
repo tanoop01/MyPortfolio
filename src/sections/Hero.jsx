@@ -2,7 +2,7 @@ import { motion } from 'framer-motion';
 import { Download, ChevronDown } from 'lucide-react';
 import Button from '../components/Button';
 import { fadeIn, slideUp } from '../utils/animations';
-import ShinyText from '../components/ShinyText';
+import Shuffle from '../components/Shuffle';
 
 const Hero = () => {
   const scrollToProjects = () => {
@@ -45,32 +45,51 @@ const Hero = () => {
             Hi, I'm
           </motion.p>
 
-          {/* Name with SHINY EFFECT - Mobile responsive */}
+          {/* Name - Mobile responsive */}
           <motion.h1
             variants={slideUp}
-            className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold px-2 sm:px-0"
+            className="text-3xl xs:text-4xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-bold px-2 sm:px-0 text-white"
           >
-            <ShinyText
-              text="Anoop Tripathi"
-              speed={3}
-              className="inline-block"
+            <Shuffle
+              text="ANOOP "
+              tag="span"
+              className="inline-block font-bold"
+              style={{ fontFamily: 'inherit', fontSize: 'inherit', fontWeight: 'inherit', color: 'white' }}
+              shuffleDirection="right"
+              duration={0.35}
+              shuffleTimes={1}
+              stagger={0.03}
+              triggerOnHover={true}
+              triggerOnce={false}
+            />
+            <Shuffle
+              text="TRIPATHI"
+              tag="span"
+              className="inline-block font-bold"
+              style={{ fontFamily: 'inherit', fontSize: 'inherit', fontWeight: 'inherit', color: 'white' }}
+              shuffleDirection="right"
+              duration={0.35}
+              shuffleTimes={1}
+              stagger={0.03}
+              triggerOnHover={true}
+              triggerOnce={false}
             />
           </motion.h1>
 
           {/* Tagline - Mobile responsive */}
           <motion.p
             variants={slideUp}
-            className="text-base xs:text-lg sm:text-xl md:text-2xl lg:text-3xl text-white font-semibold px-4 sm:px-0"
+            className="text-base xs:text-lg sm:text-xl md:text-2xl lg:text-3xl text-white font-light px-4 sm:px-0"
           >
-            Aspiring Developer | AI Enthusiast | Tech Explorer
+            Exploring the world of technology through code, creativity, and a growing passion for AI and intelligent systems.
           </motion.p>
 
           {/* Description - Mobile responsive */}
           <motion.p
             variants={slideUp}
-            className="text-sm xs:text-base sm:text-lg lg:text-xl text-white max-w-3xl mx-auto leading-relaxed px-4 sm:px-6 lg:px-0"
+            className="text-sm xs:text-base sm:text-lg lg:text-xl text-white font-extralight max-w-3xl mx-auto leading-relaxed px-4 sm:px-6 lg:px-0"
           >
-            Exploring the world of technology through code, creativity, and a growing passion for AI and intelligent systems.
+            “Every good work of software starts by scratching a developer’s personal itch.”
           </motion.p>
 
           {/* CTA Buttons - Mobile responsive */}

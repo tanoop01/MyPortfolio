@@ -8,52 +8,42 @@ const OrbitingSkills = () => {
   // Each skill has name and mastery percentage (0-100)
   const orbits = [
     {
-      radius: 150,
-      title: 'Core Languages',
+      radius: 100,
+      // title: 'Core Languages',
       skills: [
-        { name: 'Python', mastery: 80 },
         { name: 'C++', mastery: 60 },
         { name: 'C', mastery: 65 },
-        { name: 'JavaScript', mastery: 75 },
-        { name: 'HTML', mastery: 85 },
-        { name: 'CSS', mastery: 80 },
-        { name: 'TypeScript', mastery: 45 }
+        { name: 'Python', mastery: 80 },
       ]
     },
     {
-      radius: 300,
-      title: 'Data Science & AI',
+      radius: 240,
+      // title: 'Core Languages',
+      skills: [
+        { name: 'JavaScript', mastery: 75 },
+        { name: 'HTML', mastery: 85 },
+        { name: 'CSS', mastery: 80 },
+        { name: 'TypeScript', mastery: 45 },
+         { name: 'React', mastery: 55 },
+        { name: 'Next.js', mastery: 45 },
+        { name: 'Tailwind CSS', mastery: 65 },
+        { name: 'Bootstrap', mastery: 60 },
+        { name: 'Node.js', mastery: 55 },
+      ]
+    },
+    {
+      radius: 380,
+      // title: 'Data Science & AI',
       skills: [
         { name: 'Numpy', mastery: 65 },
         { name: 'Pandas', mastery: 55 },
         { name: 'Matplotlib', mastery: 45 },
         { name: 'Scikit Learn', mastery: 45 },
-        { name: 'Seaborn', mastery: 40 },
-        { name: 'PyTorch', mastery: 25 },
-        { name: 'TensorFlow', mastery: 20 },
-        { name: 'Git/Github', mastery: 75 }
-      ]
-    },
-    {
-      radius: 450,
-      title: 'Full Stack & Tools',
-      skills: [
-        { name: 'React', mastery: 55 },
-        { name: 'Next.js', mastery: 45 },
-        { name: 'Tailwind CSS', mastery: 65 },
-        { name: 'Bootstrap', mastery: 60 },
-        { name: 'Node.js', mastery: 55 },
-        { name: 'Express.js', mastery: 45 },
-        { name: 'REST APIs', mastery: 35 },
-        { name: 'MySQL', mastery: 45 },
-        { name: 'PostgreSQL', mastery: 25 },
+        { name: 'Git/Github', mastery: 75 },
         { name: 'MongoDB', mastery: 70 },
-        { name: 'Firebase', mastery: 25 },
-        { name: 'Supabase', mastery: 20 },
-        { name: 'AWS', mastery: 40 },
         { name: 'Postman', mastery: 40 }
       ]
-    }
+    },
   ];
 
   useEffect(() => {
@@ -95,12 +85,12 @@ const OrbitingSkills = () => {
                     {/* Skill Badge */}
                     <div className="relative px-4 py-2 rounded-full font-medium text-sm bg-white/10 border border-white/30 backdrop-blur-sm text-white hover:bg-white/20 hover:border-white/50 transition-all duration-300 cursor-pointer">
                       {/* Progress bar background */}
-                      <div
+                      {/* <div
                         className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-500/20 to-purple-500/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
                         style={{
                           clipPath: `inset(0 ${100 - skill.mastery}% 0 0)`,
                         }}
-                      />
+                      /> */}
                       
                       {/* Skill Name */}
                       <span className="relative z-10">{skill.name}</span>

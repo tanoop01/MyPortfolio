@@ -4,21 +4,12 @@ export const projectsData = {
   projects: [
     {
       id: 1,
-      title: "E-Commerce Platform",
-      description: "A modern e-commerce platform with cart functionality, product filtering, and responsive design. Built with React and Tailwind CSS.",
-      techStack: ["React", "Tailwind CSS", "Context API", "React Router"],
-      github: "https://github.com/yourusername/ecommerce",
-      demo: "https://ecommerce-demo.vercel.app",
-      featured: true
-    },
-    {
-      id: 2,
-      title: "Task Management App",
-      description: "A productivity app for managing tasks and projects with drag-and-drop functionality and real-time updates.",
-      techStack: ["React", "TypeScript", "Framer Motion", "Firebase"],
-      github: "https://github.com/yourusername/task-manager",
-      demo: "https://task-manager-demo.vercel.app",
-      featured: true
+      title: "BingeBuddy",
+      description: "A Python-based movie recommendation system that delivers personalized, binge-worthy film suggestions using Bag-of-Words vectorization and Cosine similarity on metadata from 4500+ movies to generate content-based recommendations. Built with scikit-learn and deployed on Streamlit Community Cloud.",
+      techStack: ["Python", "Numpy", "Pandas", "Scikit-learn","Streamlit"],
+      github: "https://github.com/tanoop01/Movie-Recommender-System.git",
+      demo: "https://my-bingebuddy.streamlit.app",
+      // featured: true
     }
   ]
 };

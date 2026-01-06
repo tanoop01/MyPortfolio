@@ -5,7 +5,7 @@ export const aboutData = {
   description: "I’m a curious innovator exploring the intersection of code, creativity, and AI, focused on building smart, user-friendly stuffs and continuously evolving with technology.",
   whoAmI: [
     "Pursuing BTech in Information Technology at NIT Jalandhar in India",
-    "Currently in Second year(4th Semester)"
+    "Currently in Second year"
    
   
   ],

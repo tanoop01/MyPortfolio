@@ -16,14 +16,14 @@ const Projects = () => {
       />
 
       <motion.div
-        className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 lg:gap-8 max-w-4xl mx-auto"
+        className="flex justify-center max-w-4xl mx-auto"
         variants={staggerContainer}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true }}
       >
         {projectsData.projects.map((project) => (
-          <motion.div key={project.id} variants={slideUp}>
+          <motion.div key={project.id} variants={slideUp} className="w-full max-w-xl">
             {/* Mobile responsive project cards */}
             <Card className="p-4 xs:p-5 sm:p-6 flex flex-col h-full group">
               {/* Featured Badge */}

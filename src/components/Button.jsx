@@ -10,7 +10,7 @@ const Button = ({
   icon: Icon,
   ...props 
 }) => {
-  const baseStyles = 'inline-flex items-center justify-center gap-1.5 sm:gap-2 font-medium rounded-full transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 dark:focus:ring-offset-gray-900 overflow-hidden';
+  const baseStyles = 'inline-flex items-center justify-center gap-1.5 sm:gap-2 font-medium rounded-full transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 overflow-hidden';
   
   const variants = {
     primary: 'bg-black/50 backdrop-blur-xl border-2 border-white/70 text-white hover:bg-white/90 hover:text-black hover:border-white focus:ring-white shadow-lg hover:shadow-xl',
@@ -46,6 +46,7 @@ const Button = ({
         transition={{ type: "spring", stiffness: 300, damping: 20 }}
         target={href.startsWith('http') ? '_blank' : undefined}
         rel={href.startsWith('http') ? 'noopener noreferrer' : undefined}
+        onMouseDown={(e) => e.preventDefault()}
         {...props}
       >
         {content}
@@ -56,7 +57,10 @@ const Button = ({
   return (
     <motion.button
       className={classes}
-      onClick={onClick}
+      onClick={(e) => {
+        if (onClick) onClick(e);
+        e.currentTarget.blur();
+      }}
       whileHover={{ scale: 1.05 }}
       whileTap={{ scale: 0.95 }}
       transition={{ type: "spring", stiffness: 300, damping: 20 }}

@@ -1,4 +1,3 @@
-import { ThemeProvider } from './context/ThemeContext';
 import Navbar from './sections/Navbar';
 import Hero from './sections/Hero';
 import About from './sections/About';
@@ -31,11 +30,10 @@ function App() {
   ];
 
   return (
-    <ThemeProvider>
-      <div className="relative min-h-screen transition-colors duration-300 bg-black">
-        {/* Light Rays Effect */}
-        <div className="fixed inset-0 z-[1] pointer-events-none">
-          <LightRays
+    <div className="relative min-h-screen transition-colors duration-300 bg-black">
+      {/* Light Rays Effect */}
+      <div className="fixed inset-0 z-[1] pointer-events-none">
+        <LightRays
             raysOrigin="top-center"
             raysColor="#00ffff"
             raysSpeed={1.5}
@@ -69,7 +67,6 @@ function App() {
           />
         </div>
       </div>
-    </ThemeProvider>
   );
 }
 

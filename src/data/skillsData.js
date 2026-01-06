@@ -30,7 +30,7 @@ export const skillsData = {
       skills: [
         { icon: Layout, name: "Kaggle", color: "text-cyan-500" },
         { icon: Workflow, name: "Python", color: "text-purple-500" },
-        { icon: Code2, name: "", color: "text-gray-800 dark:text-gray-200" },
+        { icon: Code2, name: "", color: "text-gray-800" },
         { icon: Smartphone, name: "Responsive Design", color: "text-green-500" }
       ]
     },
@@ -40,13 +40,13 @@ export const skillsData = {
         { icon: Server, name: "Node.js", color: "text-green-600" },
         { icon: Database, name: "MongoDB", color: "text-green-500" },
         { icon: Terminal, name: "VS Code", color: "text-blue-500" },
-        { icon: Cloud, name: "Vercel", color: "text-gray-800 dark:text-gray-200" }
+        { icon: Cloud, name: "Vercel", color: "text-gray-800" }
       ]
     }
   ],
   learning: [
     { icon: Cpu, name: "Advanced React Patterns", color: "text-blue-500" },
-    { icon: Server, name: "Express.js", color: "text-gray-600 dark:text-gray-400" },
+    { icon: Server, name: "Express.js", color: "text-gray-600" },
     { icon: Cloud, name: "AWS Services", color: "text-orange-500" },
     { icon: Database, name: "PostgreSQL", color: "text-blue-600" }
   ]
